@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { assets } from "../assets/assets";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { backendUrl } from "../../Constants";
-function Edit({ token }) {
+import api from "../Utils/axios.js";
+function Edit() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [image1, setImage1] = useState(false);
@@ -23,7 +22,7 @@ function Edit({ token }) {
   }, []);
   const fetchSingle = async () => {
     try {
-      const res = await axios.get(`${backendUrl}/api/product/single/${id}`);
+      const res = await api.get(`/api/product/single/${id}`);
       if (res.data.success) {
         const productData = await res.data.product;
         setImage1(productData.image[0] || "");
@@ -60,13 +59,7 @@ function Edit({ token }) {
       image2 && formData.append("image2", image2);
       image3 && formData.append("image3", image3);
       image4 && formData.append("image4", image4);
-      const res = await axios.post(
-        `${backendUrl}/api/product/edit/${id}`,
-        formData,
-        {
-          headers: { token },
-        }
-      );
+      const res = await api.post(`/api/product/edit/${id}`, formData);
       if (res.data.success) {
         toast.success(res.data.message);
         setImage1(false);

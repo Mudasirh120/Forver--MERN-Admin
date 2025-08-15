@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import api from "../Utils/axios";
+import api from "../Utils/axios.js";
 function Login({ setToken }) {
   useEffect(() => {}, []);
   const [email, setEmail] = useState("");

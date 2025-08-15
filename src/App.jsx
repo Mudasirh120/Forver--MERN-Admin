@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Login from "./Components/Login";
 import { ToastContainer } from "react-toastify";
 import Edit from "./Pages/Edit";
-import api from "./Utils/axios";
+import api from "./Utils/axios.js";
 function App() {
   const [token, setToken] = useState(false);
   const checkAuth = async () => {
