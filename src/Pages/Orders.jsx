@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import api from "../Utils/";
+import api from "../Utils/axios.js";
 import { assets } from "../assets/assets";
 function Orders({ token }) {
   const [allOrderItems, setAllOrderItems] = useState([]);
