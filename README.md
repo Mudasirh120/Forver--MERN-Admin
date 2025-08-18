@@ -1,12 +1,88 @@
-# React + Vite
+# Forever E-Commerce 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **full-stack MERN E-Commerce platform** with a modern UI, secure authentication, product management, and an integrated admin dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+### User Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 👤 User authentication
+- 🛍️ Browse products
+- 🔍 Search products by name
+- 🛒 Add to cart & checkout
+- 💳 Place orders (Cash on Delivery supported Stripe later)
+- 📦 View orders and status
+
+### Admin Features
+
+- 🔐 Secure login
+- ➕ Add, ✏️ Edit, ❌ Delete products
+- 📂 Upload product images (via Cloudinary)
+- 📊 Manage orders from dashboard
+- 🚀 Clean and responsive admin UI
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend & Admin Panel**
+
+- React
+- React Router
+- Tailwind CSS
+- Axios
+- React Toastify
+
+**Backend**
+
+- Express
+- MongoDB + Mongoose
+- JWT + bcrypt (authentication & security)
+- Multer + Cloudinary (image uploads)
+- Stripe (payment integration "future")
+- Validator (form validation)
+
+---
+
+**Note that [Forever Frontend](https://github.com/Mudasirh120/Forver--MERN-Frontend) is needed for this to work.**
+
+---
+
+## ⚡ Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Mudasirh120/Forver--MERN-Backend.git
+   cd Forever-MERN-Backend
+   ```
+2. Install Dependencies
+   ```bash
+   npm install
+   ```
+3. Create a .env file
+   ```bash
+   CLOUDINARY_CLOUDNAME="your_cloudinary_cloudname"
+   CLOUDINARY_APIKEY="your_cloudinary_apikey"
+   CLOUDINARY_SECRET="your_cloudinary_secret"
+   JWT_SECRET="your_jwt_secret"
+   NODE_ENV = "development"
+   ADMIN_EMAIL="your_admin_email"
+   ADMIN_PASSWORD="your_admin_password"
+   FRONTEND_URL="http://localhost:5173"
+   ADMIN_URL="http://localhost:5174"
+   ```
+4. Run project
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📸 Screenshots
+
+![login](./readmeImages/login.png)
+![add](./readmeImages/add.png)
+![list](./readmeImages/list.png)
+![order](./readmeImages/orders.png)
