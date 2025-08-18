@@ -46,7 +46,7 @@ A **full-stack MERN E-Commerce platform** with a modern UI, secure authenticatio
 
 ---
 
-**Note that [Forever Frontend](https://github.com/Mudasirh120/Forver--MERN-Frontend) is needed for this to work.**
+**Note that [Forever Backend](https://github.com/Mudasirh120/Forver--MERN-Backend) is needed for this to work.**
 
 ---
 
