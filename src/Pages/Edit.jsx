@@ -10,6 +10,7 @@ function Edit() {
   const [image2, setImage2] = useState(false);
   const [image3, setImage3] = useState(false);
   const [image4, setImage4] = useState(false);
+  const [existingImages, setExistingImages] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -25,16 +26,29 @@ function Edit() {
       const res = await api.get(`/api/product/single/${id}`);
       if (res.data.success) {
         const productData = await res.data.product;
-        setImage1(productData.image[0] || "");
-        setImage2(productData.image[1] || "");
-        setImage3(productData.image[2] || "");
-        setImage4(productData.image[3] || "");
+        // setImage1(productData.image[0] || "");
+        // setImage2(productData.image[1] || "");
+        // setImage3(productData.image[2] || "");
+        // setImage4(productData.image[3] || "");
+        setExistingImages([
+          productData.image[0] || null,
+          productData.image[1] || null,
+          productData.image[2] || null,
+          productData.image[3] || null,
+        ]);
+        let array = [
+          productData.image[0] || null,
+          productData.image[1] || null,
+          productData.image[2] || null,
+          productData.image[3] || null,
+        ];
+        console.log("existingImages", array);
         setName(productData.name);
         setDescription(productData.description);
         setPrice(productData.price);
         setCategory(productData.category);
         setSubCategory(productData.subCategory);
-        setBestSeller(productData.bestSeller || false);
+        setBestSeller(productData.bestseller || false);
         setSizes(productData.sizes);
       } else {
         toast.error(res.data.message);
@@ -59,6 +73,7 @@ function Edit() {
       image2 && formData.append("image2", image2);
       image3 && formData.append("image3", image3);
       image4 && formData.append("image4", image4);
+      formData.append("existingImages", JSON.stringify(existingImages));
       const res = await api.post(`/api/product/edit/${id}`, formData);
       if (res.data.success) {
         toast.success(res.data.message);
@@ -94,10 +109,10 @@ function Edit() {
             <img
               className="w-20"
               src={
-                !image1
+                !image1 && !existingImages[0]
                   ? assets.upload_area
-                  : typeof image1 == "string"
-                  ? image1
+                  : existingImages[0]
+                  ? existingImages[0]
                   : URL.createObjectURL(image1)
               }
               alt=""
@@ -115,10 +130,10 @@ function Edit() {
             <img
               className="w-20"
               src={
-                !image2
+                !image2 && !existingImages[1]
                   ? assets.upload_area
-                  : typeof image2 == "string"
-                  ? image2
+                  : existingImages[1]
+                  ? existingImages[1]
                   : URL.createObjectURL(image2)
               }
               alt=""
@@ -136,10 +151,10 @@ function Edit() {
             <img
               className="w-20"
               src={
-                !image3
+                !image3 && !existingImages[2]
                   ? assets.upload_area
-                  : typeof image3 == "string"
-                  ? image3
+                  : existingImages[2]
+                  ? existingImages[2]
                   : URL.createObjectURL(image3)
               }
               alt=""
@@ -157,10 +172,10 @@ function Edit() {
             <img
               className="w-20"
               src={
-                !image4
+                !image4 && !existingImages[3]
                   ? assets.upload_area
-                  : typeof image4 == "string"
-                  ? image4
+                  : existingImages[3]
+                  ? existingImages[3]
                   : URL.createObjectURL(image4)
               }
               alt=""
